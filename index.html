@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyanshu Singh </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 1. Global & Theme Setup */
+        :root {
+            --bg-color: #030712;
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --neon-blue: #00d2ff;
+            --neon-purple: #9d4edd;
+            --neon-green: #10b981;
+            --neon-glow: 0 0 20px rgba(0, 210, 255, 0.6);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+
+        /* Custom Premium Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-blue);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* High-End Animated Mesh Background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(0, 210, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(157, 78, 221, 0.05) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        /* --- 4K SPACE BACKGROUND WITH STARS & REALISTIC METEORS --- */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            animation: hdTwinkle linear infinite;
+            will-change: transform, opacity;
+        }
+
+        @keyframes hdTwinkle {
+            0% { opacity: 0.1; transform: scale(0.6); }
+            40% { opacity: 1; transform: scale(1.3); }
+            70% { opacity: 0.4; transform: scale(0.8); }
+            100% { opacity: 0.1; transform: scale(0.6); }
+        }
+
+        /* Realistic Natural Physics Shooting Star Styles */
+        .shooting-star {
+            position: absolute;
+            height: 1.5px;
+            background: linear-gradient(-45deg, rgba(0, 210, 255, 0), rgba(0, 210, 255, 1), #ffffff);
+            filter: drop-shadow(0 0 6px #00d2ff);
+            opacity: 0;
+            transform: rotate(-45deg);
+            will-change: transform, opacity;
+            animation: realisticMeteor ease-out forwards;
+        }
+
+        @keyframes realisticMeteor {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) rotate(-45deg) scaleX(0);
+            }
+            15% {
+                opacity: 1;
+                transform: translate(-30px, 30px) rotate(-45deg) scaleX(1);
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-350px, 350px) rotate(-45deg) scaleX(0.4);
+            }
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Advanced Glassmorphism with Backdrop Filter */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 35px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--neon-blue);
+            text-shadow: var(--neon-glow);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sub-section-title {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin: 20px 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 2. Cyberpunk Hero Section */
+        .hero {
+            text-align: center;
+            padding: 20px 0 50px 0;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .tech-badge {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(0, 210, 255, 0.02);
+            border: 1px solid var(--neon-blue);
+            box-shadow: var(--neon-glow);
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--neon-blue);
+            animation: pulse 3s infinite alternate;
+        }
+
+        /* Upgraded Cinematic Gradient Heading */
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--neon-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            min-height: 24px;
+        }
+
+        /* Typing cursor effect wrapper */
+        .typing-text {
+            color: var(--text-main);
+            font-weight: 500;
+            border-right: 2px solid var(--neon-blue);
+            padding-right: 4px;
+            animation: blink 0.75s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--neon-blue); }
+        }
+
+        /* 3. High-Level Interactive Project Cards with Premium Glow */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 210, 255, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 210, 255, 0.08), 0 0 25px rgba(0, 210, 255, 0.2);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .project-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* NEW BADGE STYLES */
+        .badge-new {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: pulseGreen 2s infinite alternate;
+        }
+
+        @keyframes pulseGreen {
+            0% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.3); }
+            100% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.7); }
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-link-text {
+            color: var(--neon-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            align-self: flex-end;
+            transition: gap 0.2s ease;
+        }
+
+        .project-card:hover .project-link-text {
+            gap: 10px;
+            text-shadow: var(--neon-glow);
+        }
+
+        .future-card {
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            background: transparent;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* 4. Skills Section Chips */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-chip {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 10px 18px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-chip:hover {
+            border-color: var(--neon-blue);
+            box-shadow: var(--neon-glow);
+            background: rgba(0, 210, 255, 0.05);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        /* 5. About Me Section */
+        .about-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #d1d5db;
+        }
+
+        /* 6. Clean Git-style Timeline Section */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -31px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #030712;
+            border: 2px solid var(--neon-blue);
+            box-shadow: var(--neon-glow);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--neon-blue);
+            font-weight: 700;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #f3f4f6;
+        }
+
+        /* 7. Contact Section Grid */
+        .contact-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 14px;
+            border-radius: 14px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .contact-btn:hover {
+            border-color: var(--neon-blue);
+            background: rgba(0, 210, 255, 0.03);
+            color: var(--neon-blue);
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.05), 0 0 10px rgba(0, 210, 255, 0.15);
+        }
+
+        .contact-btn.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .contact-btn.disabled:hover {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-main);
+            box-shadow: none;
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- POPUP / MODAL CUSTOM STYLES --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: #090d1a;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 210, 255, 0.1);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 450px;
+            padding: 30px;
+            text-align: center;
+            transform: scale(0.8);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .modal-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-web {
+            background: linear-gradient(135deg, var(--neon-blue), #0088cc);
+            color: #030712;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+        }
+        .btn-web:hover {
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-homescreen {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        .btn-homescreen:hover {
+            border-color: var(--neon-purple);
+            background: rgba(157, 78, 221, 0.05);
+            color: var(--neon-purple);
+            box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Beautiful Premium Suggestion Container */
+        .suggestion-box {
+            display: none;
+            background: rgba(157, 78, 221, 0.07);
+            border: 1px dashed var(--neon-purple);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 15px;
+            text-align: left;
+            animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 0 15px rgba(157, 78, 221, 0.1);
+        }
+
+        .suggestion-box.show {
+            display: block;
+        }
+
+        .suggestion-header {
+            color: var(--neon-purple);
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(157, 78, 221, 0.4);
+        }
+
+        .suggestion-text {
+            color: #d1d5db;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .modal-close {
+            margin-top: 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        /* Animations Framework */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 15px rgba(0, 210, 255, 0.3); }
+            100% { box-shadow: 0 0 25px rgba(0, 210, 255, 0.7); }
+        }
+
+        /* 8. Minimalist Footer */
+        footer {
+            text-align: center;
+            padding: 50px 0 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        footer i {
+            color: #ef4444;
+            margin: 0 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars-container" id="starsContainer"></div>
+
+    <div class="container">
+
+        <section class="hero">
+            <div class="tech-badge">
+                <i class="fa-solid fa-terminal"></i>
+            </div>
+            <h1>Priyanshu Singh</h1>
+            <div class="tagline">I am a <span class="typing-text" id="typerBox"></span></div>
+        </section>
+
+        <section>
+            <h2 class="section-title"><i class="fa-solid fa-code"></i> Projects</h2>
+            
+            <!-- NEW: Time Table Project Card -->
+            <div class="glass-card project-card" onclick="openProjectModal('⏰ Time Table Manager', 'https://lakshyajee2028.github.io/timetable/')">
+                <div class="project-header">
+                    <span class="project-name">⏰ Time Table Maker</span>
+                    <span class="badge-new">NEW</span>
+                </div>
+                <p class="project-desc">A powerful, interactive timetable management tool built for JEE aspirants to organize their daily study schedule. It features a live clock, target exam countdown, customizable matrix-style timetable editor, and an integrated calendar with festival and test event tracking. The smart assistant provides helpful guidance, making daily planning effortless and visually engaging.</p>
+                <span class="project-link-text">Launch site <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <div class="glass-card project-card" onclick="openProjectModal('🔄 Revision Centre', 'https://lakshyajee2028.github.io/revision/')">
+                <div class="project-header">
+                    <span class="project-name">🔄 Revision Centre</span>
+                    <span class="badge-new">NEW</span>
+                </div>
+                <p class="project-desc">A smart study & revision tracking application designed for JEE aspirants to log daily topics, manage spaced-repetition revision cycles, and build daily study streaks efficiently.</p>
+                <span class="project-link-text">Launch site <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <div class="glass-card project-card" onclick="openProjectModal('🎴 JEE FlashRecall 3D', 'https://lakshyajee2028.github.io/flashcard/')">
+                <div class="project-header">
+                    <span class="project-name">🎴 JEE FlashRecall 3D</span>
+                </div>
+                <p class="project-desc">An interactive 3D flashcard revision tool designed specifically for JEE aspirants. It allows students to quickly recall key concepts, memorize formulas subject-wise, track daily revision history with color-coded status badges, and save important cards for revision later.</p>
+                <span class="project-link-text">Launch site <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <div class="glass-card project-card" onclick="openProjectModal('🎓 Class 11th JEE Lectures', 'https://lakshyajee2028.github.io/jee/')">
+                <div class="project-header">
+                    <span class="project-name">🎓 Class 11th JEE Lectures</span>
+                </div>
+                <p class="project-desc">A dedicated educational portal providing Class 11 JEE aspirants free access to premium Physics Wallah (PW) lectures, structured chapter-wise notes, and study resources designed to streamline daily learning and revision for competitive exams.</p>
+                <span class="project-link-text">Launch site <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <div class="glass-card project-card" onclick="openProjectModal('🏫 SVM Class 10th Website', 'https://svmclass10thf.github.io/svmclass10thf/')">
+                <div class="project-header">
+                    <span class="project-name">🏫 SVM Class 10th Website (Past Project)</span>
+                </div>
+                <p class="project-desc">In this website, I integrated essential features like class details, upcoming test schedules, and curated free lectures to help my classmates stay organized. Being the only student in the school to build such a platform, it served as a centralized hub for all our academic needs.</p>
+                <span class="project-link-text">Launch site <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <div class="glass-card project-card" onclick="openProjectModal('📚 My Mistakes App', 'https://lakshyajee2028.github.io/mymistakes/')">
+                <div class="project-header">
+                    <span class="project-name">📚 My Mistakes App</span>
+                </div>
+                <p class="project-desc">A web-based tool that allows students to upload and digitally record photos of their academic mistakes from tests, DPPs, and modules. It serves as a centralized revision hub, making it easy to track, organize, and review all mistakes in one place before major exams.</p>
+                <span class="project-link-text">Launch site <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <div class="glass-card project-card" onclick="openProjectModal('⏱️ My Tracker', 'https://lakshyajee2028.github.io/studytracker/')">
+                <div class="project-header">
+                    <span class="project-name">⏱️ My Tracker</span>
+                </div>
+                <p class="project-desc">A web application designed to help JEE aspirants optimize their daily schedule by tracking study hours, sleep patterns, and daily habits. It enables students to analyze historical data for self-improvement and features an automated WhatsApp integration that sends full-day performance reports directly to parents.</p>
+                <span class="project-link-text">Launch site <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+
+            <div class="glass-card future-card">
+                <span style="color: var(--neon-blue); font-weight: 600; font-size: 0.95rem; letter-spacing: 1px;"><i class="fa-solid fa-hourglass-half fa-spin"></i> 2-3 Advanced websites Coming Soon..</span>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 6px;">Architectures and design languages are currently active behind closed doors.</p>
+            </div>
+        </section>
+
+        <section class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-screwdriver-wrench"></i> Stack</h2>
+            <div class="sub-section-title"><i class="fa-solid fa-circle-check" style="color: var(--neon-blue);"></i> Core Competencies</div>
+            <div class="skills-grid">
+                <div class="skill-chip"><i class="fa-solid fa-robot" style="color: #00d2ff;"></i> Advanced AI Tools</div>
+                <div class="skill-chip"><i class="fa-brands fa-html5" style="color: #e34c26;"></i> HTML5</div>
+            </div>
+
+            <div class="sub-section-title"><i class="fa-solid fa-circle-notch fa-spin" style="color: #f1c40f;"></i> Learning</div>
+            <div class="skills-grid">
+                <div class="skill-chip"><i class="fa-solid fa-atom" style="color: #61dafb;"></i> Physics</div>
+                <div class="skill-chip"><i class="fa-solid fa-calculator" style="color: #10b981;"></i> Mathematics</div>
+                <div class="skill-chip"><i class="fa-brands fa-js" style="color: #f7df1e;"></i> JavaScript </div>
+                <div class="skill-chip"><i class="fa-brands fa-css3-alt" style="color: #264de4;"></i> AI Mastery</div>
+                <div class="skill-chip"><i class="fa-brands fa-git-alt" style="color: #f1502f;"></i> Github</div>
+            </div>
+        </section>
+
+        <section class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-user"></i> About me</h2>
+            <p class="about-text">
+                Hi, I'm Priyanshu Singh, a passionate student and self-taught web developer. I enjoy building modern, responsive websites and solving challenging problems in physics and mathematics. Alongside preparing for JEE, I continuously work on personal projects to improve my programming and design skills. My goal is to create useful digital products while expanding my technical knowledge every day.
+            </p>
+        </section>
+
+        <section class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-route"></i> Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-title">Started learning HTML & CSS</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-title">Built SVM Website (Class 10 Milestone)</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2026</div>
+                    <div class="timeline-title">Created "My Mistakes" App, "My Tracker", JEE FlashRecall & JEE Portal</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2026</div>
+                    <div class="timeline-title">Active development on upcoming websites...</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Future</div>
+                    <div class="timeline-title">Secret Milestones In Progress 🤫</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card">
+            <h2 class="section-title"><i class="fa-solid fa-envelope"></i> Contact </h2>
+            <div class="contact-links">
+                <a href="mailto:priyanshusiing01@gmail.com" class="contact-btn"><i class="fa-solid fa-envelope"></i> Email</a>
+                <a href="https://wa.me/919219951830" target="_blank" class="contact-btn whatsapp-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>              
+                <div class="contact-btn disabled" title="Not Available"><i class="fa-brands fa-instagram"></i> Unavailable</div>
+            </div>
+        </section>
+
+        <footer>
+            Built with <i class="fa-solid fa-heart"></i> by Priyanshu Singh<br>
+            &copy; 2026 All Rights Reserved
+        </footer>
+
+    </div>
+
+    <div class="modal-overlay" id="projectModal" onclick="closeProjectModal(event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div class="modal-title" id="modalTitle">Project Name</div>
+            <div class="modal-desc">Select an action for this platform:</div>
+            
+            <div class="modal-options" id="modalOptionsContainer">
+                <a href="#" id="modalWebLink" target="_blank" class="modal-btn btn-web">
+                    <i class="fa-solid fa-globe"></i> Go to Website
+                </a>
+                <button id="modalHomeScreenBtn" class="modal-btn btn-homescreen">
+                    <i class="fa-solid fa-mobile-screen-button"></i> Add to Home Screen
+                </button>
+            </div>
+
+            <div class="suggestion-box" id="customSuggestion">
+                <div class="suggestion-header">
+                    <i class="fa-solid fa-lightbulb"></i> Quick Suggestion
+                </div>
+                <div class="suggestion-text">
+                    Launch the website first, then select <strong>"Add website to home screen"</strong> from your browser menu for easy access in the future.
+                </div>
+            </div>
+
+            <button class="modal-close" onclick="forceCloseModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        // Generate 4K Ultra HD Dynamic Multi-Color Twinkling Stars
+        function createStars() {
+            const container = document.getElementById('starsContainer');
+            const starCount = 110; 
+            
+            const colors = [
+                '#ffffff', // Pure Diamond White
+                '#00d2ff', // Electric Cyber Blue
+                '#9d4edd', // Neon Purple
+                '#ffdf7a', // Soft Galactic Gold
+                '#ffffff'
+            ];
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const size = Math.random() * 2.8 + 0.6; 
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const duration = Math.random() * 4 + 1.8; 
+                const delay = Math.random() * 6;
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.backgroundColor = randomColor;
+                
+                if (size > 1.8) {
+                    star.style.boxShadow = `0 0 8px ${randomColor}, 0 0 12px rgba(255,255,255,0.4)`;
+                }
+                
+                star.style.animationDuration = `${duration}s`;
+                star.style.animationDelay = `${delay}s`;
+                
+                container.appendChild(star);
+            }
+        }
+
+        // Realistic & Natural Physics-Based Shooting Stars Engine
+        function launchShootingStar() {
+            const container = document.getElementById('starsContainer');
+            if(!container) return;
+
+            const meteor = document.createElement('div');
+            meteor.classList.add('shooting-star');
+            
+            const startX = Math.random() * 100;
+            const startY = Math.random() * -10;
+            const meteorWidth = Math.random() * 80 + 70;
+            const animationDuration = Math.random() * 1.2 + 0.8;
+
+            meteor.style.left = `${startX}%`;
+            meteor.style.top = `${startY}px`;
+            meteor.style.width = `${meteorWidth}px`;
+            meteor.style.animationDuration = `${animationDuration}s`;
+            
+            container.appendChild(meteor);
+            setTimeout(() => {
+                meteor.remove();
+            }, animationDuration * 1000);
+        }
+
+        // Automatic Smart Loop initialization for Tagline Typing Effect
+        const phrases = ["Student.", "Web Developer.", "JEE Aspirant."];
+        let currentPhraseIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        const typerBox = document.getElementById('typerBox');
+        function handleTyping() {
+            const currentFullText = phrases[currentPhraseIndex];
+            if (isDeleting) {
+                typerBox.textContent = currentFullText.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+            } else {
+                typerBox.textContent = currentFullText.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+            }
+
+            let typingSpeed = isDeleting ? 40 : 90;
+
+            if (!isDeleting && currentCharIndex === currentFullText.length) {
+                typingSpeed = 1800;
+                isDeleting = true;
+            } else if (isDeleting && currentCharIndex === 0) {
+                isDeleting = false;
+                currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                typingSpeed = 400;
+            }
+
+            setTimeout(handleTyping, typingSpeed);
+        }
+        
+        // Initializing UI scripts on content load ready
+        window.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            handleTyping();
+            
+            setInterval(launchShootingStar, Math.random() * 4000 + 6000);
+        });
+
+        function openProjectModal(projectName, webUrl) {
+            document.getElementById('modalTitle').innerText = projectName;
+            document.getElementById('modalWebLink').href = webUrl;
+            
+            const homeScreenBtn = document.getElementById('modalHomeScreenBtn');
+            const suggestionBox = document.getElementById('customSuggestion');
+            suggestionBox.classList.remove('show');
+            homeScreenBtn.onclick = function() {
+                suggestionBox.classList.add('show');
+            };
+            
+            document.getElementById('projectModal').classList.add('active');
+        }
+
+        function closeProjectModal(event) {
+            if(event.target.classList.contains('modal-overlay')) {
+                document.getElementById('projectModal').classList.remove('active');
+            }
+        }
+
+        function forceCloseModal() {
+            document.getElementById('projectModal').classList.remove('active');
+        }
+    </script>
+
+</body>
+</html>
