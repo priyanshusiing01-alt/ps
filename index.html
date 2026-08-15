@@ -408,12 +408,6 @@
             opacity: 0.4;
             cursor: not-allowed;
         }
-        .contact-btn.disabled:hover {
-            background: rgba(255, 255, 255, 0.02);
-            color: var(--text-main);
-            box-shadow: none;
-            border-color: rgba(255, 255, 255, 0.05);
-        }
 
         /* --- POPUP / MODAL CUSTOM STYLES --- */
         .modal-overlay {
@@ -513,6 +507,17 @@
             transform: translateY(-2px);
         }
 
+        .btn-apk {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+        }
+        .btn-apk:hover {
+            background: rgba(16, 185, 129, 0.2);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            transform: translateY(-2px);
+        }
+
         /* Beautiful Premium Suggestion Container */
         .suggestion-box {
             display: none;
@@ -608,21 +613,20 @@
         <section>
             <h2 class="section-title"><i class="fa-solid fa-code"></i> Projects</h2>
             
-            <!-- NEW: Clock Project Card -->
+            <!-- Clock Project Card (Only one with NEW badge) -->
             <div class="glass-card project-card" onclick="openProjectModal('⏳ Project Clock', 'https://lakshyajee2028.github.io/clock/')">
                 <div class="project-header">
-                    <span class="project-name">🕐 Pro Clock</span>
+                    <span class="project-name">⏳ Pro Clock</span>
                     <span class="badge-new">NEW</span>
                 </div>
                 <p class="project-desc">A precise, elegant digital clock utility web app designed with a clean cyber-aesthetic interface to keep track of real-time hours, minutes, and seconds effortlessly.</p>
                 <span class="project-link-text">Launch site <i class="fa-solid fa-arrow-right"></i></span>
             </div>
 
-            <!-- NEW: Time Table Project Card -->
+            <!-- Time Table Manager Project Card -->
             <div class="glass-card project-card" onclick="openProjectModal('⏰ Time Table Manager', 'https://lakshyajee2028.github.io/timetable/')">
                 <div class="project-header">
                     <span class="project-name">⏰ Time Table Maker</span>
-                    <span class="badge-new">NEW</span>
                 </div>
                 <p class="project-desc">A powerful, interactive timetable management tool built for JEE aspirants to organize their daily study schedule. It features a live clock, target exam countdown, customizable matrix-style timetable editor, and an integrated calendar with festival and test event tracking. The smart assistant provides helpful guidance, making daily planning effortless and visually engaging.</p>
                 <span class="project-link-text">Launch site <i class="fa-solid fa-arrow-right"></i></span>
@@ -631,7 +635,6 @@
             <div class="glass-card project-card" onclick="openProjectModal('🔄 Revision Centre', 'https://lakshyajee2028.github.io/revision/')">
                 <div class="project-header">
                     <span class="project-name">🔄 Revision Centre</span>
-                    <span class="badge-new">NEW</span>
                 </div>
                 <p class="project-desc">A smart study & revision tracking application designed for JEE aspirants to log daily topics, manage spaced-repetition revision cycles, and build daily study streaks efficiently.</p>
                 <span class="project-link-text">Launch site <i class="fa-solid fa-arrow-right"></i></span>
@@ -755,6 +758,7 @@
 
     </div>
 
+    <!-- Modal with APK Download Button Added -->
     <div class="modal-overlay" id="projectModal" onclick="closeProjectModal(event)">
         <div class="modal-box" onclick="event.stopPropagation()">
             <div class="modal-title" id="modalTitle">Project Name</div>
@@ -767,6 +771,9 @@
                 <button id="modalHomeScreenBtn" class="modal-btn btn-homescreen">
                     <i class="fa-solid fa-mobile-screen-button"></i> Add to Home Screen
                 </button>
+                <a href="https://priyanshusiing01-alt.github.io/appstore/" target="_blank" class="modal-btn btn-apk">
+                    <i class="fa-solid fa-download"></i> Download .apk file
+                </a>
             </div>
 
             <div class="suggestion-box" id="customSuggestion">
